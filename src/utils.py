@@ -3,7 +3,6 @@ import time
 from datetime import datetime
 
 import plotille
-
 from alembic.command import upgrade
 from alembic.config import Config
 
@@ -24,6 +23,13 @@ def plot_graph(data):
     fig.plot([x[2] for x in data], [x[1] for x in data], lc=42)
     fig.show()
     print(fig.show())
+
+
+def convert_into_currency(data, exchange):
+    if not exchange:
+        return
+    for item in data:
+        item[1] /= exchange
 
 
 def run_sql_migrations():

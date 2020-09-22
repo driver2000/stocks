@@ -14,8 +14,7 @@ def get_stock_codes(connection):
 
 def get_fx_mapping(connection) -> dict:
     return {
-        x[0]: x[1]
-        for x in connection.execute(sa.select([tables.FXRate.external_code, tables.FXRate.code]))
+        x[0]: x[1] for x in connection.execute(sa.select([tables.FXRate.external_code, tables.FXRate.code]))
     }
 
 
@@ -102,6 +101,20 @@ def get_fx_latest_value(connection, code):
         .order_by(sa.desc(tables.FXQuote.date))
         .limit(1)
     ).scalar()
+
+
+def get_fx_history(connection, code, start=None, end=None):
+    qry = (
+        sa.select([tables.FXQuote]).where(tables.FXQuote.code == code).order_by(sa.desc(tables.FXQuote.date))
+    )
+
+    if start:
+        qry = qry.where(tables.FXQuote.date >= start)
+
+    if end:
+        qry = qry.where(tables.FXQuote.date <= end)
+
+    return connection.execute(qry)
 
 
 def get_stock_history(connection, code, start=None, end=None):
