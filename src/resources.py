@@ -4,7 +4,7 @@ BASE_URL = "https://finnhub.io/api/v1/"
 API_TOKEN = os.environ["API_TOKEN"]
 DB_DNS = "postgresql://app@postgres/app"
 CODES = [
-    "FIW",
+    "AAPL",
     "HSCZ",
     "MUI",
     "GSP",
@@ -21,7 +21,7 @@ CODES = [
     "QSR",
     "SHIPZ",
     "CRHM",
-    "FAII=",
+    "MSFT",
     "TNXP",
     "ATNX",
     "NMZ",
@@ -39,7 +39,7 @@ CODES = [
     "EVI",
     "CFA",
     "NEAR",
-    "J",
+    "GOOGL",
     "PTGX",
     "PXJ",
     "SPE",
@@ -91,7 +91,7 @@ CODES = [
     "CBT",
     "SOGO",
     "CEL",
-    "C-N",
+    "FB",
     "HNGR",
     "PBDM",
     "CIB",
